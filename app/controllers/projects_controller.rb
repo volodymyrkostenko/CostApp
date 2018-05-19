@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
     end
   end
   def show
+    @items = @project.items
+    @item = Item.new
+    @item.project_id = @project.id
   end
   
   
