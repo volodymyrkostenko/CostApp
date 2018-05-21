@@ -1,4 +1,47 @@
 <h1><%=@project.title%></h1>
+<%=@a%>
+<hr>
+<hr>
+<%@a.each do |n| %>
+	<table border="1">
+		<caption><%=n.first.category.title%></caption>
+		<th>Найменування</th>
+		<th>Кількість</th>
+		<th>Ціна</th>
+		<th>Вартість</th>
+	    <br>
+		<%n.each do |item|%>
+          <tr>
+		      <td><%=item.title%></td>
+		      <td><%=item.count%></td>
+		      <td><%=item.price%></td>
+		      <td><%=item.total%></td>
+	      </tr>	
+	     <%end%>
+	     
+	</table>
+    
+	 <hr>
+	 
+<%end%>
+<table border='2'>
+<caption>Зведена таблиця</caption>
+	<%@a.each do |n|%>
+		<tr>
+			<td><%=n.first.category.title%></td>
+			<td><%=n.last.total%></td>
+		</tr>
+		 		
+	<%end%>
+	<tr>
+			<td>Всього</td>
+			<td><%=@total%></td>
+		</tr>
+</table>
 
-<%=render @items%>
+
+
+
+
+
 <%= render 'items/form'%>

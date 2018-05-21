@@ -15,9 +15,20 @@ class ProjectsController < ApplicationController
     end
   end
   def show
+    @a = []
     @items = @project.items
     @item = Item.new
     @item.project_id = @project.id
+    @categories =Category.all
+    @categories.each do |category|
+      m=@items.select{|n| n.category_id == category.id}
+      @a<<m unless m.blank?
+      @a.last<< Item.new(title:"Всього", count:nil, price:nil,  total:@a.last.inject(0){|sum, n| sum+n.total}) unless m.blank?
+    end
+    @total = @a.inject(0){|sum, n| sum+n.last.total}
+
+  
+
   end
   
   
