@@ -16,6 +16,7 @@
 		      <td><%=item.count%></td>
 		      <td><%=item.price%></td>
 		      <td><%=item.total%></td>
+		      <td><%=link_to "видалити", project_item_path(@project, item), method: :delete  unless item.title == 'Всього'%></td>
 	      </tr>	
 	     <%end%>
 	     

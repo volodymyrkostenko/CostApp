@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
       redirect_to project_path(@project.id)
     end
   end
+  def destroy
+    item = Item.find(params[:id])
+    @project.items.delete item
+    redirect_to @project
+    
+  end
   private
   
   def item_params
