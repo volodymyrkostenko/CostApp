@@ -5,8 +5,8 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.float :count
       t.float :price
       t.float :total
-      t.references :category, foreign_key: true
-      t.references :project, foreign_key: true
+      t.references :category, index: true
+      t.references :project, index: true
       t.timestamps
     end
   end
