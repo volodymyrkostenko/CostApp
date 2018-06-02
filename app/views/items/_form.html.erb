@@ -1,7 +1,7 @@
-<%=form_for([@project, @project.items.build]) do |f| %>
+<%=form_with model: [@project, @project.items.build] do |f| %>
   <%=f.collection_select(:category_id, Category.all, :id, :title)%>
   <%=f.label :title%>
-  <%=f.text_field :title %>	
+  <%=f.text_field :title %>
   <%=f.label :count%>
   <%=f.text_field :count %>
    <%=f.label :price%>
@@ -9,6 +9,6 @@
    <%=f.label :total%>
   <%=f.text_field :total %>
   <%= f.submit%>
-  
-  
+
+
 <%end%>

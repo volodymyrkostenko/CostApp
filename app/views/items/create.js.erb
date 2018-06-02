@@ -1,0 +1,20 @@
+var c = "#"+"<%=@item.category.id%>"
+var sum = ".last_line_"+"<%=@item.category.id%>"
+var sum_add = "."+"<%=@item.category.id%>"+"_sum"
+if(<%=@items.count%> == 1 ){
+
+  $('.container').prepend( ' <table>   <tr> <td>Найменування</td>  <td>кількість</td> <td> Ціна</td> <td>Вартість<td> </tr><tbody id = <%=@item.category.id %>> <tr><td> <%=@item.title%></td><td><%=@item.count%></td><td><%=@item.price%></td><td><%=@item.total%></td></tr> <tr class ="last_line_<%= @item.category.id%>" ><td>Всього</td><td></td><td></td><td><%=@item.total%></td> </tr></tbody> </table>')
+  $('.container').prepend('<h4><%= @item.category.title%> </h4>')
+}
+else{
+
+  $(c).prepend( '<tr><td><%=@item.title%></td><td><%=@item.count%> </td><td><%=@item.price%> </td><td><%=@item.total%></td></tr> ')
+  $(sum).remove()
+  $(c).append('<tr class ="last_line_<%= @item.category.id%>" ><td>Всього</td><td> </td><td></td><td><%= @s%></td></tr>')
+
+}
+var total = '.s_'+'<%=@item.category.id%>'
+$(total).remove()
+$('.sum').prepend('<tr class = s_<%=@item.category.id%>><td> <%=@item.category.title%> </td> <td> <%=@s%> </td> </tr>')
+$('.last_line').remove()
+$('.sum').append('<tr class = last_line> <td>Всього</td> <td> <%=@total%> </td> </tr>' )

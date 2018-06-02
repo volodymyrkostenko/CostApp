@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only:[:destroy, :show]
-  
+
   def index
-    @projects = Project.all 
+    @projects = Project.all
   end
-  
- 
+
+
   def create
     @project = Project.new(project_params)
     if @project.save
@@ -27,26 +27,26 @@ class ProjectsController < ApplicationController
     end
     @total = @a.inject(0){|sum, n| sum+n.last.total}
 
-  
+
 
   end
-  
-  
+
+
   def destroy
     @project.destroy
     respond_to do |format|
       redirect_to projects_path
     end
-    
+
   end
   private
-  
+
   def project_params
      params.require(:project).permit(:title)
-    
+
   end
   def set_project
     @project = Project.find(params[:id])
   end
-    
+
 end
