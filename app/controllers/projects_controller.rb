@@ -26,8 +26,12 @@ class ProjectsController < ApplicationController
       @a.last<< Item.new(title:"Всього", count:nil, price:nil,  total:@a.last.inject(0){|sum, n| sum+n.total}) unless m.blank?
     end
     @total = @a.inject(0){|sum, n| sum+n.last.total}
-
-
+    respond_to do |f|
+      f.html
+      f.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename= "cost.xlsx"'
+      }
+    end
 
   end
 
