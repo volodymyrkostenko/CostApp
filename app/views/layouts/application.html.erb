@@ -12,6 +12,11 @@
     <div class="buttons">
       <%=link_to "categories", categories_path, class: "link"%>
       <%= link_to "projects", projects_path, class: "link"%>
+      <% if user_signed_in? %>
+       <%= link_to('logout', destroy_user_session_path, method: :delete, class: "link")%>
+    <% else %>
+      <%= link_to('login', new_user_session_path, class: "link")%>
+    <% end %>
     </div>
 
     <%= yield %>
