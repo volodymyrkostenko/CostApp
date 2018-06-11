@@ -1,8 +1,18 @@
+
 <h1><%=@project.title%></h1>
+
 <div class="container">
+	<div class="forms">
+		<%= link_to 'Download as .xlsx', project_path(@project, format: :xlsx) %>
+
+
+
+
+		<%= render 'items/form'%>
+	</div>
 	<%@a.each do |n| %>
 
-		 <table border="1" >
+		 <table  >
 			 <caption><%=n.first.category.title%></caption>
 			 <th>Найменування</th>
 			 <th>Кількість</th>
@@ -36,13 +46,14 @@
 </div>
 
 <div class="summary">
-	<table border='2'>
+	<table>
 	<caption>Зведена таблиця</caption>
 		<tbody class = sum>
 			<%@a.each do |n|%>
 				<tr class = "s_<%=n.first.category.id%>">
 					<td><%=n.first.category.title%></td>
 					<td><%=n.last.total%></td>
+					<td><%="#{(n.last.total/@total*100).round(1)} %" %></td>
 				</tr>
 
 			<%end%>
@@ -51,19 +62,17 @@
 		<tr class="last_line">
 				<td>Всього</td>
 				<td><%=@total%></td>
+				<td>100%</td>
 			</tr>
 		</tbody>
 	</table>
 
+
+
+	<div class="forms">
+		<%= link_to 'Download as .xlsx', project_path(@project, format: :xlsx) %>
+		<%= render 'items/form'%>
+	</div>
+
+
 </div>
-
-<div id="table">
-
-</div>
-
-<%= link_to 'Download as .xlsx', project_path(@project, format: :xlsx) %>
-
-
-
-
-<%= render 'items/form'%>

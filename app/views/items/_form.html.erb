@@ -1,13 +1,13 @@
 <%=form_with model: [@project, @project.items.build] do |f| %>
-  <%=f.collection_select(:category_id, Category.all, :id, :title)%>
+  <%=f.collection_select(:category_id, Category.all, :id, :title)%><br>
   <%=f.label :title%>
-  <%=f.text_field :title %>
+  <%=f.text_field :title %> <br>
   <%=f.label :count%>
-  <%=f.text_field :count %>
+  <%=f.text_field :count %> <br>
    <%=f.label :price%>
-  <%=f.text_field :price %>
+  <%=f.text_field :price %> <br>
    <%=f.label :total%>
-  <%=f.text_field :total %>
+  <%=f.text_field :total %><br>
   <%= f.submit%>
 
 

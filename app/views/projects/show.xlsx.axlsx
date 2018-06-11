@@ -20,16 +20,16 @@ wb.add_worksheet(name: "Cost #{@project.title}") do |sheet|
   end
   sheet.add_row ["Зведена таблиця", ""], :style => border
   sheet.merge_cells("A#{row.to_s}:B#{row.to_s}")
-  sheet.add_row ["категорія", "Вартість"], :style => border
+  sheet.add_row ["категорія", "Вартість", "Питома вага"], :style => border
   @a.each do |n|
-    sheet.add_row [n.first.category.title, n.last.total], :style => border
+    sheet.add_row [n.first.category.title, n.last.total, (n.last.total/@total).round(1)], :style => border
 
 
   end
-  sheet.add_row ["Всього", @total], :style => red_cell
+  sheet.add_row ["Всього", @total, "100%"], :style => red_cell
 
    sheet.add_chart(Axlsx::Pie3DChart, :start_at => [0,row+3+@a.count], :end_at => [5, row+@a.count+13], :title => "Структура витрат") do |chart|
-      chart.add_series :data => sheet["B#{(row+2).to_s}:B#{(row+1+@a.count).to_s}"], :labels => sheet["A#{(row+2).to_s}:A#{(row+1+@a.count).to_s}"],  :colors => ['FF0000', '00FF00', '0000FF','000000','d9f441','8241f4'], :bg_color => 'ffffff'
+      chart.add_series :data => sheet["B#{(row+2).to_s}:B#{(row+1+@a.count).to_s}"], :labels => sheet["A#{(row+2).to_s}:A#{(row+1+@a.count).to_s}"],  :colors => ['FF0000', '00FF00', '0000FF','0ddfe0','d9f441','8241f4'], :bg_color => 'ffffff'
     end
 
 

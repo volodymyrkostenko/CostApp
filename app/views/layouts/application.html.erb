@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <div class="buttons">
+      <%=link_to "categories", categories_path, class: "link"%>
+      <%= link_to "projects", projects_path, class: "link"%>
+    </div>
+
     <%= yield %>
   </body>
 </html>

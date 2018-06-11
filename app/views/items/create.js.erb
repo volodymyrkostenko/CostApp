@@ -15,6 +15,6 @@ else{
 }
 var total = '.s_'+'<%=@item.category.id%>'
 $(total).remove()
-$('.sum').prepend('<tr class = s_<%=@item.category.id%>><td> <%=@item.category.title%> </td> <td> <%=@s%> </td> </tr>')
+$('.sum').prepend("<tr class = s_<%=@item.category.id%>><td> <%=@item.category.title%> </td> <td> <%=@s%> </td>  <td><%=(@s/@total*100).round(1)%> % </td> </tr>")
 $('.last_line').remove()
-$('.sum').append('<tr class = last_line> <td>Всього</td> <td> <%=@total%> </td> </tr>' )
+$('.sum').append('<tr class = last_line> <td>Всього</td> <td> <%=@total%> </td> <td>100%</td> </tr>' )
