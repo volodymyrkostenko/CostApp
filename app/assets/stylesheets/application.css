@@ -68,3 +68,6 @@ table{
 
 
 }
+.destroy a{
+  background-color: red;
+}

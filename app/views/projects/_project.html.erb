@@ -1,2 +1,8 @@
 <%= link_to project.title, project_path(project)%>
+<br>
+<br><br>
+<div class="destroy">
+  <%= link_to "destroy project",project_path(project), method: :delete, data: {confirm: 'Are you sure?'}%>
+
+</div>
 <hr>
