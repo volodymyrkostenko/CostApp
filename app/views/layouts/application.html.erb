@@ -10,8 +10,9 @@
 
   <body>
     <div class="buttons">
-      <%=link_to "categories", categories_path, class: "link"%>
-      <%= link_to "projects", projects_path, class: "link"%>
+      <%=link_to "c", categories_path, class: "link"%>
+      <%= link_to "p", projects_path, class: "link"%>
+      <%= link_to "now", project_path(Project.last), class: "link"%>
       <% if user_signed_in? %>
        <%= link_to('logout', destroy_user_session_path, method: :delete, class: "link")%>
     <% else %>

@@ -22,7 +22,7 @@ wb.add_worksheet(name: "Cost #{@project.title}") do |sheet|
   sheet.merge_cells("A#{row.to_s}:B#{row.to_s}")
   sheet.add_row ["категорія", "Вартість", "Питома вага"], :style => border
   @a.each do |n|
-    sheet.add_row [n.first.category.title, n.last.total, (n.last.total/@total).round(1)], :style => border
+    sheet.add_row [n.first.category.title, n.last.total, "#{(n.last.total/@total*100).round(1)} %"], :style => border
 
 
   end

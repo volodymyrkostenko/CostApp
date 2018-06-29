@@ -19,21 +19,24 @@
 			 <th>Ціна</th>
 			 <th>Вартість</th>
 				 <br>
-	     <tbody id =<%=n.first.category.id%>>
-				 <%n.each do |item|%>
+				<div class="table">
+					<tbody id =<%=n.first.category.id%> >
+						<%n.each do |item|%>
 
-					 <tr class = <%= last_line(n, item) %>  >
+							<tr class = <%= last_line(n, item) %>  >
 
-							 <td><%=item.title%></td>
-							 <td><%=item.count%></td>
-							 <td><%=item.price%></td>
-							 <td><%=item.total%></td>
-							 <td><%=link_to "видалити", project_item_path(@project, item), method: :delete  unless item.title == 'Всього'%></td>
+									<td><%=item.title%></td>
+									<td><%=item.count%></td>
+									<td><%=item.price%></td>
+									<td><%=item.total%></td>
+									<td><%=link_to "видалити", project_item_path(@project, item), method: :delete  unless item.title == 'Всього'%></td>
 
-						 </tr>
+								</tr>
 
-					<%end%>
-	     </tbody>
+						 <%end%>
+					</tbody>
+				</div>
+
 
 
 		 </table>
@@ -53,7 +56,7 @@
 				<tr class = "s_<%=n.first.category.id%>">
 					<td><%=n.first.category.title%></td>
 					<td><%=n.last.total%></td>
-					<td><%="#{(n.last.total/@total*100).round(1)} %" %></td>
+
 				</tr>
 
 			<%end%>
@@ -62,7 +65,7 @@
 		<tr class="last_line">
 				<td>Всього</td>
 				<td><%=@total%></td>
-				<td>100%</td>
+
 			</tr>
 		</tbody>
 	</table>
