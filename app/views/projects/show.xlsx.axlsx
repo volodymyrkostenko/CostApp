@@ -42,10 +42,12 @@ end
 wb.add_worksheet(name: "Item order") do |sheet|
   date = nil
   row =1
+  
   @i.each do |i|
     unless date == i.created_at.to_date
       sheet.add_row [i.created_at.in_time_zone("Kyiv").strftime("%m-%d-%A")]
       sheet.merge_cells("A#{row.to_s}:E#{row.to_s}")
+      sheet.add_row []
       row+=1
     end
     sheet.add_row [i.title, i.count, i.price, i.total.round(2), i.created_at.in_time_zone("Kyiv").strftime("%Y-%m-%d-%H-%M") ], :style => border
