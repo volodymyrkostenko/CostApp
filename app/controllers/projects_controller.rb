@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
       @a.last<< Item.new(title:"Всього", count:nil, price:nil,  total:@a.last.inject(0){|sum, n| sum+n.total}) unless m.blank?
     end
     @total = @a.inject(0){|sum, n| sum+n.last.total}
+    @i = @items.sort
     respond_to do |f|
       f.html
       f.xlsx {
@@ -36,10 +37,11 @@ class ProjectsController < ApplicationController
   end
 
 
+
   def destroy
     @project.destroy
     redirect_to projects_path
-    
+
 
   end
   private
